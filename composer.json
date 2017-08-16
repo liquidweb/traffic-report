@@ -1,0 +1,29 @@
+{
+    "name": "liquidweb/traffic-report",
+    "description": "Get details about your site's performance from right within WordPress",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Liquid Web",
+            "email": "wordpress@liquidweb.com",
+            "homepage": "https://www.liquidweb.com"
+        },
+        {
+            "name": "Steve Grunwell",
+            "homepage": "https://stevegrunwell.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/liquidweb/traffic-report/issues",
+        "source": "https://github.com/liquidweb/traffic-report"
+    },
+    "require-dev": {
+        "stevegrunwell/wp-enforcer": "^0.5.0"
+    },
+    "scripts": {
+      "post-install-cmd": [
+        "wp-enforcer"
+      ]
+    }
+}
