@@ -1,8 +1,15 @@
-.DS_Store
-Thumbs.db
+# Dependencies
+node_modules
+vendor
+
+# Local configuration
 wp-cli.local.yml
-node_modules/
-vendor/
+
+# Compiled files
 *.sql
 *.tar.gz
 *.zip
+
+# Hidden system files
+.DS_Store
+Thumbs.db
