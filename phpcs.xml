@@ -21,7 +21,7 @@
 
 	<!-- Don't complain about missing file doc comments for the main plugin file. -->
 	<rule ref="Squiz.Commenting.FileComment.Missing">
-		<exclude-pattern>sticky-tax.php</exclude-pattern>
+		<exclude-pattern>traffic-report.php</exclude-pattern>
 	</rule>
 
 	<!-- Inline comments for unit tests aren't required as strictly. -->
