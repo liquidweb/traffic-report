@@ -25,7 +25,7 @@
   },
   "autoload-dev": {
     "files": [
-      "tests/test-tools/monster-insights.php",
+      "tests/test-tools/helpers.php",
       "tests/test-tools/class-monsterinsights.php",
       "tests/test-tools/class-monsterinsights-ga.php"
     ]
