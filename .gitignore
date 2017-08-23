@@ -6,6 +6,7 @@ vendor
 wp-cli.local.yml
 
 # Compiled files
+dist
 *.sql
 *.tar.gz
 *.zip

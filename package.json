@@ -1,0 +1,29 @@
+{
+  "name": "traffic-report",
+  "description": "Get details about your site's performance from right within WordPress",
+  "version": "1.0.0",
+  "author": {
+    "name": "Liquid Web",
+    "url": "https://www.liquidweb.com"
+  },
+  "contributors": [
+    {
+      "name": "Steve Grunwell",
+      "url": "https://stevegrunwell.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liqudweb/traffic-report.git"
+  },
+  "bugs": {
+    "url": "https://github.com/liquidweb/traffic-report/issues"
+  },
+  "license": "MIT",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-wp-i18n": "^1.0.0"
+  }
+}
