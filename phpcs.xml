@@ -32,6 +32,19 @@
 		<exclude-pattern>tests/*</exclude-pattern>
 	</rule>
 
+	<!--
+		Allow comments after statements, as they're needed for WPCS exclusions.
+		@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Whitelisting-code-which-flags-errors
+	-->
+	<rule ref="Squiz.Commenting.PostStatementComment.Found">
+		<severity>0</severity>
+	</rule>
+
+	<!-- Don't worry about naming conventions in tests. -->
+	<rule ref="WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid">
+		<exclude-pattern>tests/*</exclude-pattern>
+	</rule>
+
 	<rule ref="WordPress-Extra" />
 	<rule ref="WordPress-Docs" />
 </ruleset>
