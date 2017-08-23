@@ -81,6 +81,7 @@ function refresh_counts( $args = array() ) {
 
 	return $results;
 }
+add_action( 'traffic_report_refresh', __NAMESPACE__ . '\refresh_counts' );
 
 /**
  * Given a row of results, find the corresponding post ID and add the page view count to it.
