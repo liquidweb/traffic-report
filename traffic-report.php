@@ -20,3 +20,4 @@ define( 'TRAFFIC_REPORT_MAIN_FILE', __FILE__ );
 require_once __DIR__ . '/includes/admin.php';
 require_once __DIR__ . '/includes/core.php';
 require_once __DIR__ . '/includes/cron.php';
+require_once __DIR__ . '/includes/monster-insights.php';

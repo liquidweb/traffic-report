@@ -8,6 +8,18 @@
 
 namespace LiquidWeb\TrafficReport\Cron;
 
+use LiquidWeb\TrafficReport\MonsterInsights as Plugin;
+
+/**
+ * Register the cron events *only* if Monster Insights is active.
+ */
+function maybe_register_cron_events() {
+	if ( Plugin\is_plugin_active() ) {
+		register_cron_events();
+	}
+}
+register_activation_hook( TRAFFIC_REPORT_MAIN_FILE, __NAMESPACE__ . '\maybe_register_cron_events' );
+
 /**
  * Register the Traffic Report cron events.
  */
@@ -16,7 +28,6 @@ function register_cron_events() {
 		wp_schedule_event( time(), 'hourly', 'traffic_report_refresh' );
 	}
 }
-register_activation_hook( TRAFFIC_REPORT_MAIN_FILE, __NAMESPACE__ . '\register_cron_events' );
 
 /**
  * Remove cron events when the plugin is deactivated.
