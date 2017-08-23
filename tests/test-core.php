@@ -81,7 +81,7 @@ class CoreTest extends WP_UnitTestCase {
 	public function test_prepare_results_sums_multiple_entries() {
 		$post   = $this->factory()->post->create();
 		$before = [
-			$post => 2,
+			$post => 3,
 		];
 		$after  = [
 			$post => 5,
