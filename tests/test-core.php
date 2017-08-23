@@ -93,4 +93,34 @@ class CoreTest extends WP_UnitTestCase {
 	public function test_prepare_results_drops_empty_paths() {
 		$this->assertEmpty( Core\prepare_results( [], [ '/this-path-does-not-exist/', 42 ] ) );
 	}
+
+	public function test_delete_stored_page_views() {
+		global $wpdb;
+
+		$values = [];
+		for ( $i = 1; $i <= 10; $i++ ) {
+			$values[] = sprintf( '(%d, \'_traffic_report_views\', %d)', $i, $i );
+		}
+
+		// Using GTE as there may be rows left over from other tests.
+		$this->assertGreaterThanOrEqual( 10, $wpdb->query( sprintf( // WPCS: unprepared SQL ok.
+			"INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) VALUES %s",
+			implode( ',', $values )
+		) ) );
+
+		$this->assertGreaterThanOrEqual( 10, Core\delete_stored_page_views() );
+
+		$this->assertEmpty( $wpdb->get_var( "SELECT COUNT(post_id) FROM $wpdb->postmeta WHERE meta_key = '_traffic_report_views'" ) );
+	}
+
+	public function test_delete_postmeta_cache() {
+		$post = $this->factory()->post->create();
+		wp_cache_add( $post, true, 'post_meta' );
+
+		$this->assertTrue( wp_cache_get( $post, 'post_meta' ) );
+
+		Core\delete_postmeta_cache( $post );
+
+		$this->assertEmpty( wp_cache_get( $post, 'post_meta' ) );
+	}
 }

@@ -61,9 +61,7 @@ function refresh_counts( $args = array() ) {
 
 	// Bulk-update the post meta.
 	$wpdb->query( 'START TRANSACTION' );
-	$deleted  = $wpdb->delete( $wpdb->postmeta, array(
-		'meta_key' => '_traffic_report_views',
-	) );
+	$deleted  = delete_stored_page_views();
 	$inserted = $wpdb->query( sprintf( // WPCS: unprepared SQL ok.
 		"INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) VALUES %s",
 		implode( ', ', $values )
@@ -106,6 +104,21 @@ function prepare_results( $results, $row ) {
 	}
 
 	return $results;
+}
+
+/**
+ * Remove all _traffic_report_views entries from the post meta table.
+ *
+ * @global $wpdb
+ *
+ * @return int|false The number of rows affected, or false if there was an error running the query.
+ */
+function delete_stored_page_views() {
+	global $wpdb;
+
+	return $wpdb->delete( $wpdb->postmeta, array(
+		'meta_key' => '_traffic_report_views',
+	) );
 }
 
 /**
